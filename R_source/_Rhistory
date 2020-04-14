@@ -1,0 +1,512 @@
+ggplot(data = graph_df, aes(x=k , y=dv_nc, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elemento do vetor") +
+ylab(expression("Número de comparações: Nc" %*% "10"^-12)) +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Inversamente Quase Ordenado")
+##################################
+#VETOR INVERSAMENTE QUASE ORDENADO - LOG NÚMERO DE COMPARAÇÕES (NC)
+df = read_csv('invers-quase-ord-nc.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = nc, -k)
+#Criação de coluna com Log (NC) - NC: Número de Comparações
+graph_df = mutate(graph_df, log_nc = log(nc))
+#Gráfico do Vetor Inversamente Quase Ordenado: log(nc) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=log_nc, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab("Número de comparações: log (Nc)") +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Inversamente Quase Ordenado")
+##################################
+df = read_csv('invers-quase-ord-na.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = na,-k)
+#Criação de coluna com Na*10^-12
+graph_df = mutate(graph_df, dv_na = na/10^12)
+#Gráfico do Vetor Inversamente Quase Ordenado: Na x 10^-12 vs. Numero de elementos do vetor
+ggplot(data = graph_df, aes(x=k , y=dv_na, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab(expression("Número de atribuições: Na" %*% "10"^-12))+
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Inversamente Quase Ordenado")
+##################################
+#VETOR INVERSAMENTE QUASE ORDENADO - LOG NÚMERO DE ATRIBUIÇÕES (NA)
+df = read_csv('invers-quase-ord-na.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = na,-k)
+#Criação de coluna com Log (NA) - NA: Número de Atribuições
+graph_df = mutate(graph_df, log_na = log(na))
+#Gráfico do Vetor Inversamente Quase Ordenado: log(na) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=log_na, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab("Número de atribuições: log (Na)") +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Inversamente Quase Ordenado")
+####################################################################################################
+#CENÁRIO 4: VETOR COM MUITOS VALORES REPETIDOS ----
+#VETOR COM MUITOS VALORES REPETIDOS - NÚMERO DE COMPARAÇÕES (NC)
+df = read_csv('valores-repet-nc.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = nc, -k)
+#Criação de coluna com Nc*10^-12
+graph_df = mutate(graph_df, dv_nc = nc/10^12)
+#Gráfico do Vetor Inversamente Quase Ordenado: Na x 10^-12 vs. Numero de elementos do vetor
+ggplot(data = graph_df, aes(x=k , y=dv_nc, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elemento do vetor") +
+ylab(expression("Número de comparações: Nc" %*% "10"^-12)) +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Com Muitos Valores Repetidos")
+##################################
+#VETOR COM MUITOS VALORES REPETIDOS - LOG NÚMERO DE COMPARAÇÕES (NC)
+df = read_csv('valores-repet-nc.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = nc, -k)
+#Criação de coluna com Log (NC) - NC: Número de Comparações
+graph_df = mutate(graph_df, log_nc = log(nc))
+#Gráfico do Vetor Com Muitos Valores Repetidos: log(nc) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=log_nc, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab("Número de comparações: log (Nc)") +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Com Muitos Valores Repetidos")
+##################################
+#VETOR COM MUITOS VALORES REPETIDOS - NÚMERO DE ATRIBUIÇÕES (NA)
+df = read_csv('valores-repet-na.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = na,-k)
+#Criação de coluna com Na*10^-12
+graph_df = mutate(graph_df, dv_na = na/10^12)
+#Gráfico do Vetor Com Muitos Valores Repetidos: log(na) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=dv_na, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elemento do vetor") +
+ylab(expression("Número de atribuições: Na" %*% "10"^-12)) +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Com Muitos Valores Repetidos")
+##################################
+#VETOR COM MUITOS VALORES REPETIDOS - LOG NÚMERO DE ATRIBUIÇÕES (NA)
+df = read_csv('valores-repet-na.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = na,-k)
+#Criação de coluna com Log (NA) - NA: Número de Atribuições
+graph_df = mutate(graph_df, log_na = log(na))
+#Gráfico do Vetor Com Muitos Valores Repetidos: log(na) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=log_na, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab("Número de atribuições: log (Na)") +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Com Muitos Valores Repetidos")
+####################################################################################################
+source('~/Documents/2nd_semester/ICC2/Trabalhos_ICC2/Trab01/R_source/R_source_and_csv/plot.R')
+#Gráficos do Estudo comparativo dos métodos de ordenação
+#Objetivo: Analisar o número de comparações e atribuições de cada método de ordenação
+#Desenvolvido por: Juliana Yendo - NUSP 9597020
+#Desenvolvido por: Stella Granatto Justo - NUSP 9558882
+#Data: 21/09/2018
+####################################################################################################
+#Inclusão das bibliotecas e definição do diretório de trabalho
+library(tidyverse)
+getwd()
+setwd('./')
+list.files()
+####################################################################################################
+#CENÁRIO 1: VETOR ALEATÓRIO ----
+#VETOR ALEATÓRIO - NÚMERO DE COMPARAÇÕES (NC)
+df = read_csv('aleatorio-nc.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = nc, -k)
+#Criação de coluna com Nc*10^-12
+graph_df = mutate(graph_df, dv_nc = nc/10^12)
+#Gráfico do Vetor Aleatório: Nc x 10^-12 vs. Numero de elementos do vetor
+ggplot(data = graph_df, aes(x=k , y=dv_nc, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elemento do vetor") +
+ylab(expression("Número de comparações: Nc" %*% "10"^-12)) +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Aleatório")
+##################################
+#VETOR ALEATÓRIO - LOG NÚMERO DE COMPARAÇÕES (NC)
+df = read_csv('aleatorio-nc.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = nc, -k)
+#Criação de coluna com Log (NC) - NC: Número de Comparações
+graph_df = mutate(graph_df, log_nc = log(nc))
+#Gráfico do Vetor Aleatório: log(nc) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=log_nc, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab("Número de comparações: log (Nc)") +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Aleatório")
+##################################
+#VETOR ALEATÓRIO - NÚMERO DE ATRIBUIÇÕES (NA)
+df = read_csv('aleatorio-na.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = na,-k)
+#Criação de coluna com Na*10^-12
+graph_df = mutate(graph_df, dv_na = na/10^12)
+#Gráfico do Vetor Aleatório:  Na x 10^-12 vs. Numero de elementos do vetor
+ggplot(data = graph_df, aes(x=k , y=dv_na, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab(expression("Número de atribuições: Na" %*% "10"^-12)) +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Aleatório")
+##################################
+#VETOR ALEATÓRIO - LOG NÚMERO DE ATRIBUIÇÕES (NA)
+df = read_csv('aleatorio-na.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = na,-k)
+#Criação de coluna com Log (NA) - NA: Número de Atribuições
+graph_df = mutate(graph_df, log_na = log(na))
+#Gráfico do Vetor Aleatório: log(na) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=log_na, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab("Número de atribuições: log (Na)") +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Aleatório")
+####################################################################################################
+#CENÁRIO 2: VETOR QUASE ORDENADO ----
+#VETOR QUASE ORDENADO - NÚMERO DE COMPARAÇÕES (NC)
+df = read_csv('quase-ord-nc.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = nc, -k)
+#Criação de coluna com Nc*10^-12
+graph_df = mutate(graph_df, dv_nc = nc/10^12)
+#Gráfico do Vetor Quase Ordenado: Nc x 10^-12 vs. Numero de elementos do vetor
+ggplot(data = graph_df, aes(x=k , y=dv_nc, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elemento do vetor") +
+ylab(expression("Número de comparações: Nc" %*% "10"^-12)) +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Quase Ordenado")
+##################################
+#VETOR QUASE ORDENADO - LOG NÚMERO DE COMPARAÇÕES (NC)
+df = read_csv('quase-ord-nc.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = nc, -k)
+#Criação de coluna com Log (NC) - NC: Número de Comparações
+graph_df = mutate(graph_df, log_nc = log(nc))
+#Gráfico do Vetor Quase Ordenado: log(nc) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=log_nc, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab("Número de comparações: log (Nc)") +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Quase Ordenado")
+##################################
+#VETOR QUASE ORDENADO - NÚMERO DE ATRIBUIÇÕES (NA)
+df = read_csv('quase-ord-na.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = na,-k)
+#Criação de coluna com Na*10^-12 - NA: Número de Atribuições
+graph_df = mutate(graph_df, dv_na = na/10^12)
+#Gráfico do Vetor Quase Ordenado: Na x 10^-12 vs. Numero de elementos do vetor
+ggplot(data = graph_df, aes(x=k , y=dv_na, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab(expression("Número de atribuições: Na" %*% "10"^-12))+
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Quase Ordenado")
+##################################
+#VETOR QUASE ORDENADO - LOG NÚMERO DE ATRIBUIÇÕES (NA)
+df = read_csv('quase-ord-na.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = na,-k)
+#Criação de coluna com Log (NA) - NA: Número de Atribuições
+graph_df = mutate(graph_df, log_na = log(na))
+#Gráfico do Vetor Quase Ordenado: log(na) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=log_na, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab("Número de atribuições: log (Na)") +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Quase Ordenado")
+####################################################################################################
+#CENÁRIO 3: VETOR INVERSAMENTE QUASE ORDENADO ----
+#VETOR INVERSAMENTE QUASE ORDENADO - NÚMERO DE COMPARAÇÕES (NC)
+df = read_csv('invers-quase-ord-nc.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = nc, -k)
+#Criação de coluna com Nc*10^-12
+graph_df = mutate(graph_df, dv_nc = nc/10^12)
+#Gráfico do Vetor Inversamente Quase Ordenado: Nc x 10^-12 vs. Numero de elementos do vetor
+ggplot(data = graph_df, aes(x=k , y=dv_nc, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elemento do vetor") +
+ylab(expression("Número de comparações: Nc" %*% "10"^-12)) +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Inversamente Quase Ordenado")
+##################################
+#VETOR INVERSAMENTE QUASE ORDENADO - LOG NÚMERO DE COMPARAÇÕES (NC)
+df = read_csv('invers-quase-ord-nc.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = nc, -k)
+#Criação de coluna com Log (NC) - NC: Número de Comparações
+graph_df = mutate(graph_df, log_nc = log(nc))
+#Gráfico do Vetor Inversamente Quase Ordenado: log(nc) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=log_nc, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab("Número de comparações: log (Nc)") +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Inversamente Quase Ordenado")
+##################################
+df = read_csv('invers-quase-ord-na.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = na,-k)
+#Criação de coluna com Na*10^-12
+graph_df = mutate(graph_df, dv_na = na/10^12)
+#Gráfico do Vetor Inversamente Quase Ordenado: Na x 10^-12 vs. Numero de elementos do vetor
+ggplot(data = graph_df, aes(x=k , y=dv_na, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab(expression("Número de atribuições: Na" %*% "10"^-12))+
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Inversamente Quase Ordenado")
+##################################
+#VETOR INVERSAMENTE QUASE ORDENADO - LOG NÚMERO DE ATRIBUIÇÕES (NA)
+df = read_csv('invers-quase-ord-na.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = na,-k)
+#Criação de coluna com Log (NA) - NA: Número de Atribuições
+graph_df = mutate(graph_df, log_na = log(na))
+#Gráfico do Vetor Inversamente Quase Ordenado: log(na) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=log_na, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab("Número de atribuições: log (Na)") +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Inversamente Quase Ordenado")
+####################################################################################################
+#CENÁRIO 4: VETOR COM MUITOS VALORES REPETIDOS ----
+#VETOR COM MUITOS VALORES REPETIDOS - NÚMERO DE COMPARAÇÕES (NC)
+df = read_csv('valores-repet-nc.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = nc, -k)
+#Criação de coluna com Nc*10^-12
+graph_df = mutate(graph_df, dv_nc = nc/10^12)
+#Gráfico do Vetor Inversamente Quase Ordenado: Na x 10^-12 vs. Numero de elementos do vetor
+ggplot(data = graph_df, aes(x=k , y=dv_nc, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elemento do vetor") +
+ylab(expression("Número de comparações: Nc" %*% "10"^-12)) +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Com Muitos Valores Repetidos")
+##################################
+#VETOR COM MUITOS VALORES REPETIDOS - LOG NÚMERO DE COMPARAÇÕES (NC)
+df = read_csv('valores-repet-nc.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = nc, -k)
+#Criação de coluna com Log (NC) - NC: Número de Comparações
+graph_df = mutate(graph_df, log_nc = log(nc))
+#Gráfico do Vetor Com Muitos Valores Repetidos: log(nc) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=log_nc, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab("Número de comparações: log (Nc)") +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Com Muitos Valores Repetidos")
+##################################
+#VETOR COM MUITOS VALORES REPETIDOS - NÚMERO DE ATRIBUIÇÕES (NA)
+df = read_csv('valores-repet-na.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = na,-k)
+#Criação de coluna com Na*10^-12
+graph_df = mutate(graph_df, dv_na = na/10^12)
+#Gráfico do Vetor Com Muitos Valores Repetidos: log(na) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=dv_na, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elemento do vetor") +
+ylab(expression("Número de atribuições: Na" %*% "10"^-12)) +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Com Muitos Valores Repetidos")
+##################################
+#VETOR COM MUITOS VALORES REPETIDOS - LOG NÚMERO DE ATRIBUIÇÕES (NA)
+df = read_csv('valores-repet-na.csv')
+cbPalette <- c("#000000", "#0072B2", "#E69F00", "#009E73", "#D55E00", "#F0E442", "#56B4E9", "#CC79A7")
+#Mudança da tabela para formato long
+graph_df = gather(data = df,key = algorithm,value = na,-k)
+#Criação de coluna com Log (NA) - NA: Número de Atribuições
+graph_df = mutate(graph_df, log_na = log(na))
+#Gráfico do Vetor Com Muitos Valores Repetidos: log(na) x Tamanho do Vetor
+ggplot(data = graph_df, aes(x=k , y=log_na, group=algorithm, colour=algorithm, shape = algorithm)) +
+geom_point(size = 3, alpha = 1) +
+geom_line() +
+scale_colour_manual(values=cbPalette) +
+theme_classic() +
+theme(text = element_text(size = 18))+
+scale_shape_manual(values=c(13,19,14,19,20,17,15,18)) +
+xlab("Número de elementos do vetor") +
+ylab("Número de atribuições: log (Na)") +
+guides(colour=guide_legend(title="Algoritmos de Ordenação"),
+shape=guide_legend(title="Algoritmos de Ordenação")) +
+ggtitle("Vetor Com Muitos Valores Repetidos")
+####################################################################################################
